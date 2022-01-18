@@ -1,22 +1,34 @@
 import dayjs from "dayjs";
 import Image from "next/image";
-import { IdProps } from "pages/blog/[id]";
-import { blogProps } from "components/Top";
 import styles from "./style.module.css";
 import Link from "next/link";
+import { ThumbnailProps } from "components/Top";
 
-export type ArticleProps = {
-  blogs: blogProps;
+type ArticleProps = {
+  body: string;
+  publishDate: string;
+  thumbnail?: ThumbnailProps;
+  title: string;
 };
 
-function Article({ blogs }: IdProps): JSX.Element {
-  const { body, publishDate, thumbnail, title } = blogs;
+function Article({
+  body,
+  publishDate,
+  thumbnail,
+  title,
+}: ArticleProps): JSX.Element {
   return (
     <div>
-      {/* {console.log(blogs)} */}
       <h2 className={styles.title}>{title}</h2>
       {dayjs(publishDate).format("YYYY.MM.DD")}
-      {thumbnail ? <Image alt="thumbnail" src={thumbnail.url} /> : null}
+      {thumbnail ? (
+        <Image
+          alt="thumbnail"
+          src={thumbnail.url}
+          height={thumbnail.height}
+          width={thumbnail.width}
+        />
+      ) : null}
       <div dangerouslySetInnerHTML={{ __html: body }}></div>
       <Link href="/">
         <a>ホームに戻る</a>

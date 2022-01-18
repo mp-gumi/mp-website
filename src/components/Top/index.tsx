@@ -3,17 +3,17 @@ import Link from "next/link";
 import styles from "./style.module.css";
 
 export type TopProps = {
-  blogs: blogProps[];
+  blogs: BlogProps[];
 };
 
-export type blogProps = {
+export type BlogProps = {
   id: string;
   title: string;
   body: string;
   publishDate: string;
-  thumbnail?: thumbnailProps;
+  thumbnail?: ThumbnailProps;
 };
-type thumbnailProps = {
+export type ThumbnailProps = {
   url: string;
   height: number;
   width: number;

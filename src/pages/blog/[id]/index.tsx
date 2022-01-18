@@ -1,17 +1,21 @@
 import Article from "components/Article";
-import { blogProps } from "components/Top";
+import { BlogProps } from "components/Top";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { client } from "../../../../libs/client";
 
-export type IdProps = {
-  blogs: blogProps;
-};
-
-function Pages(blogs: blogProps): JSX.Element {
+function Pages({
+  body,
+  publishDate,
+  thumbnail,
+  title,
+}: BlogProps): JSX.Element {
   return (
-    <div>
-      <Article blogs={blogs} />
-    </div>
+    <Article
+      body={body}
+      publishDate={publishDate}
+      thumbnail={thumbnail}
+      title={title}
+    />
   );
 }
 
@@ -23,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<IdProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
   if (!params) {
     return {
       notFound: true,
@@ -36,12 +40,12 @@ export const getStaticProps: GetStaticProps<IdProps> = async ({ params }) => {
     };
   }
 
-  const data = await client.get({
+  const blogs = await client.get({
     endpoint: "blog",
     contentId: params.id,
   });
 
-  if (!data) {
+  if (!blogs) {
     return {
       notFound: true,
     };
@@ -49,7 +53,11 @@ export const getStaticProps: GetStaticProps<IdProps> = async ({ params }) => {
 
   return {
     props: {
-      blogs: data,
+      body: blogs.body,
+      id: blogs.id,
+      publishDate: blogs.publishDate,
+      thumbnail: blogs.thumbnail ? blogs.thumbnail : null,
+      title: blogs.title,
     },
   };
 };
