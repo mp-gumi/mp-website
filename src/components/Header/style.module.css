@@ -1,0 +1,14 @@
+.wrapper {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  justify-content: center;
+  width: 100%;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+}

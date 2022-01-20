@@ -3,20 +3,8 @@ import { BlogProps } from "components/Top";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { client } from "../../../../libs/client";
 
-function Pages({
-  body,
-  publishDate,
-  thumbnail,
-  title,
-}: BlogProps): JSX.Element {
-  return (
-    <Article
-      body={body}
-      publishDate={publishDate}
-      thumbnail={thumbnail}
-      title={title}
-    />
-  );
+function Pages({ body, publishDate, title }: BlogProps): JSX.Element {
+  return <Article body={body} publishDate={publishDate} title={title} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -55,7 +43,7 @@ export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
     props: {
       body: blogs.body,
       id: blogs.id,
-      publishDate: blogs.publishDate,
+      publishDate: blogs.publishDate ? blogs.publishDate : null,
       thumbnail: blogs.thumbnail ? blogs.thumbnail : null,
       title: blogs.title,
     },

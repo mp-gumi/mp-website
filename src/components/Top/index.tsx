@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./style.module.css";
+import Header from "components/Header";
 
 export type TopProps = {
   blogs: BlogProps[];
@@ -22,16 +24,33 @@ export type ThumbnailProps = {
 function Top({ blogs }: TopProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
-      {blogs.map(({ id, publishDate, title }) => (
-        <div key={id}>
-          <Link href={`/blog/${id}`}>
-            <a>
-              {title}
-              {dayjs(publishDate).format("YYYY.MM.DD")}
-            </a>
-          </Link>
-        </div>
-      ))}
+      <Header />
+      <div className={styles.inner}>
+        {blogs.map(({ id, publishDate, thumbnail, title }) => (
+          <div key={id} className={styles.article}>
+            <Link href={`/blog/${id}`}>
+              <a className={styles.link}>
+                <div className={styles.date}>
+                  {dayjs(publishDate).format("YYYY.MM.DD")}
+                </div>
+                <div className={styles.title}>{title}</div>
+                <div className={styles.thumbnail}>
+                  {thumbnail ? (
+                    <Image
+                      alt="thumbnail"
+                      src={thumbnail.url}
+                      width="96px"
+                      height="54px"
+                    />
+                  ) : (
+                    <div className={styles.dummy} />
+                  )}
+                </div>
+              </a>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

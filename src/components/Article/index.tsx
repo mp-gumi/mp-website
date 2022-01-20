@@ -1,37 +1,28 @@
 import dayjs from "dayjs";
-import Image from "next/image";
 import styles from "./style.module.css";
 import Link from "next/link";
-import { ThumbnailProps } from "components/Top";
+import Header from "components/Header";
 
 type ArticleProps = {
   body: string;
   publishDate: string;
-  thumbnail?: ThumbnailProps;
   title: string;
 };
 
-function Article({
-  body,
-  publishDate,
-  thumbnail,
-  title,
-}: ArticleProps): JSX.Element {
+function Article({ body, publishDate, title }: ArticleProps): JSX.Element {
   return (
-    <div>
+    <div className={styles.wrapper}>
+      <Header />
       <h2 className={styles.title}>{title}</h2>
-      {dayjs(publishDate).format("YYYY.MM.DD")}
-      {thumbnail ? (
-        <Image
-          alt="thumbnail"
-          src={thumbnail.url}
-          height={thumbnail.height}
-          width={thumbnail.width}
-        />
-      ) : null}
-      <div dangerouslySetInnerHTML={{ __html: body }}></div>
+      <div className={styles.date}>
+        {dayjs(publishDate).format("YYYY.MM.DD")}
+      </div>
+      <div
+        dangerouslySetInnerHTML={{ __html: body }}
+        className={styles.body}
+      ></div>
       <Link href="/">
-        <a>ホームに戻る</a>
+        <a className={styles.link}>ブログトップへ</a>
       </Link>
     </div>
   );
