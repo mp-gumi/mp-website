@@ -2,13 +2,11 @@ import Top, { TopProps } from "components/Top";
 import { client } from "../../libs/client";
 import { GetStaticProps } from "next";
 
-export type PagesProps = Pick<TopProps, "blogs">;
-
-function Pages({ blogs }: PagesProps): JSX.Element {
+function Pages({ blogs }: TopProps): JSX.Element {
   return <Top blogs={blogs} />;
 }
 
-export const getStaticProps: GetStaticProps<PagesProps> = async () => {
+export const getStaticProps: GetStaticProps<TopProps> = async () => {
   const data = await client.get({ endpoint: "blog" });
 
   return {

@@ -1,0 +1,46 @@
+.wrapper {
+  text-align: center;
+}
+
+.title {
+  color: "#000";
+  text-align: center;
+}
+
+.date {
+  color: #828282;
+  font-size: 12px;
+  padding: 0 20px 0 0;
+  text-align: right;
+}
+
+.body {
+  text-align: left;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.otherArticleLink {
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #000;
+  margin: 8px;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.topLink {
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #000;
+  margin: 8px;
+  padding: 8px;
+  text-decoration: none;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.linksWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 20px;
+}
