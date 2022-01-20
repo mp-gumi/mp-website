@@ -21,7 +21,7 @@ function Body({
   title,
 }: BodyProps): JSX.Element {
   const prevArticleLink = useCallback((id: string, prevId: string) => {
-    if (id === prevId) return;
+    if (id === prevId) return <div />;
 
     return (
       <Link href={`/blog/${prevId}`}>
@@ -31,7 +31,7 @@ function Body({
   }, []);
 
   const nextArticleLink = useCallback((id: string, nextId: string) => {
-    if (id === nextId) return;
+    if (id === nextId) return <div />;
 
     return (
       <Link href={`/blog/${nextId}`}>
