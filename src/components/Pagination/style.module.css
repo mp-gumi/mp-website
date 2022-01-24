@@ -1,13 +1,26 @@
 .wrapper {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   list-style-type: none;
+  width: 300px;
 }
 
 .link {
-  border: 2px solid #000;
   color: #000;
-  padding: 4px;
   text-decoration: none;
+}
+
+.box {
+  border: 2px solid #000;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  text-decoration: none;
+  width: 32px;
 }

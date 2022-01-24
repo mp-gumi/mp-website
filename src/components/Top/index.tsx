@@ -6,6 +6,7 @@ import Pagination from "components/Pagination";
 export type TopProps = {
   blogs: BlogProps[];
   totalCount: number;
+  pageIndex: number;
 };
 
 export type BlogProps = {
@@ -21,12 +22,12 @@ export type ThumbnailProps = {
   width: number;
 };
 
-function Top({ blogs, totalCount }: TopProps): JSX.Element {
+function Top({ blogs, pageIndex, totalCount }: TopProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <Header />
       <ArticleList blogs={blogs} />
-      <Pagination totalCount={totalCount} />
+      <Pagination totalCount={totalCount} pageIndex={pageIndex} />
     </div>
   );
 }

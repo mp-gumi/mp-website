@@ -5,10 +5,11 @@ import { GetStaticPaths, GetStaticProps } from "next";
 type IndexProps = {
   blogs: BlogProps[];
   totalCount: number;
+  pageIndex: number;
 };
 
-function Index({ blogs, totalCount }: IndexProps): JSX.Element {
-  return <Top blogs={blogs} totalCount={totalCount} />;
+function Index({ blogs, pageIndex, totalCount }: IndexProps): JSX.Element {
+  return <Top blogs={blogs} totalCount={totalCount} pageIndex={pageIndex} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -54,6 +55,7 @@ export const getStaticProps: GetStaticProps<TopProps> = async ({ params }) => {
     props: {
       blogs: data.contents,
       totalCount: data.totalCount,
+      pageIndex: parseInt(params.index),
     },
   };
 };
