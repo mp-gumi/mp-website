@@ -3,16 +3,16 @@ import { BlogProps } from "components/Top";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { client } from "../../../../libs/client";
 
-type PagesProps = BlogProps & { prevId: string; nextId: string };
+type IdProps = BlogProps & { prevId: string; nextId: string };
 
-function Pages({
+function Id({
   body,
   id,
   nextId,
   prevId,
   publishDate,
   title,
-}: PagesProps): JSX.Element {
+}: IdProps): JSX.Element {
   return (
     <Article
       body={body}
@@ -25,17 +25,32 @@ function Pages({
   );
 }
 
+const getAllContents = async (limit = 10, offset = 0): Promise<BlogProps[]> => {
+  const data = await client.get({
+    endpoint: "blog",
+    queries: {
+      offset,
+      limit,
+    },
+  });
+  if (data.offset + data.limit < data.totalCount) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const contents = await getAllContents(data.limit, data.offset + data.limit);
+    return [...data.contents, ...contents];
+  }
+  return data.contents;
+};
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await client.get({ endpoint: "blog" });
-  const paths = data.contents.map(({ id }: { id: string }) => ({
+  const allContents = await getAllContents();
+  const paths = allContents.map(({ id }: { id: string }) => ({
     params: { id },
   }));
+
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<PagesProps> = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps<IdProps> = async ({ params }) => {
   if (!params) {
     return {
       notFound: true,
@@ -48,44 +63,44 @@ export const getStaticProps: GetStaticProps<PagesProps> = async ({
     };
   }
 
-  const blogs = await client.get({
+  const blog = await client.get({
     endpoint: "blog",
     contentId: params.id,
   });
 
-  if (!blogs) {
+  if (!blog) {
     return {
       notFound: true,
     };
   }
 
-  const data = await client.get({ endpoint: "blog" });
-  const index = data.contents.findIndex(
+  const allContents = await getAllContents();
+  const index = allContents.findIndex(
     (content: BlogProps) => content.id === params.id
   );
 
-  if (!data || !data.contents) {
+  if (!allContents) {
     return {
       notFound: true,
     };
   }
   const nextIndex = index === 0 ? 0 : index - 1;
   const prevIndex =
-    index === data.totalCount - 1 ? data.totalCount - 1 : index + 1;
-  const prevId = data.contents[prevIndex].id;
-  const nextId = data.contents[nextIndex].id;
+    index === allContents.length - 1 ? allContents.length - 1 : index + 1;
+  const prevId = allContents[prevIndex].id;
+  const nextId = allContents[nextIndex].id;
 
   return {
     props: {
-      body: blogs.body,
-      id: blogs.id,
+      body: blog.body,
+      id: blog.id,
       nextId,
       prevId,
-      publishDate: blogs.publishDate ? blogs.publishDate : null,
-      thumbnail: blogs.thumbnail ? blogs.thumbnail : null,
-      title: blogs.title,
+      publishDate: blog.publishDate ? blog.publishDate : null,
+      thumbnail: blog.thumbnail ? blog.thumbnail : null,
+      title: blog.title,
     },
   };
 };
 
-export default Pages;
+export default Id;

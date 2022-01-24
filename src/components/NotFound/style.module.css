@@ -1,0 +1,11 @@
+.wrapper {
+  text-align: center;
+}
+
+.link {
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #000;
+  padding: 4px;
+  text-decoration: none;
+}

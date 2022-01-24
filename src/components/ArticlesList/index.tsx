@@ -2,9 +2,13 @@ import dayjs from "dayjs";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./style.module.css";
-import { TopProps } from "components/Top";
+import { BlogProps } from "components/Top";
 
-function ArticleList({ blogs }: TopProps): JSX.Element {
+type ArticleListProps = {
+  blogs: BlogProps[];
+};
+
+function ArticleList({ blogs }: ArticleListProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
       {blogs.map(({ id, publishDate, thumbnail, title }) => (
@@ -12,23 +16,21 @@ function ArticleList({ blogs }: TopProps): JSX.Element {
           <Link href={`/blog/${id}`}>
             <a className={styles.link}>
               <div className={styles.date}>
-                {dayjs(publishDate).format("YYYY.MM.DD")}
+                {publishDate
+                  ? dayjs(publishDate).format("YYYY.MM.DD")
+                  : "1970.01.01"}
               </div>
               <div className={styles.title}>{title}</div>
-              <div className={styles.thumbnailWrapper}>
-                {thumbnail ? (
-                  <div className={styles.thumbnailInner}>
-                    <Image
-                      alt="thumbnail"
-                      src={thumbnail.url}
-                      width="96px"
-                      height="54px"
-                    />
-                  </div>
-                ) : (
-                  <div className={styles.dummy} />
-                )}
-              </div>
+              {thumbnail ? (
+                <div className={styles.thumbnailWrapper}>
+                  <Image
+                    alt="thumbnail"
+                    src={thumbnail.url}
+                    width="96px"
+                    height="54px"
+                  />
+                </div>
+              ) : null}
             </a>
           </Link>
         </div>

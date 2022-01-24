@@ -44,7 +44,7 @@ function Body({
     <div className={styles.wrapper}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.date}>
-        {dayjs(publishDate).format("YYYY.MM.DD")}
+        {publishDate ? dayjs(publishDate).format("YYYY.MM.DD") : ""}
       </div>
       <div dangerouslySetInnerHTML={{ __html: body }} className={styles.body} />
       <div className={styles.linksWrapper}>
