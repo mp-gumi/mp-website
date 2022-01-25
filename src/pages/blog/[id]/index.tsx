@@ -1,6 +1,7 @@
 import Article from "components/Article";
 import { BlogProps } from "components/Top";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 import { client } from "../../../../libs/client";
 
 type IdProps = BlogProps & { prevId: string; nextId: string };
@@ -11,17 +12,42 @@ function Id({
   nextId,
   prevId,
   publishDate,
+  thumbnail,
   title,
 }: IdProps): JSX.Element {
   return (
-    <Article
-      body={body}
-      id={id}
-      nextId={nextId}
-      prevId={prevId}
-      publishDate={publishDate}
-      title={title}
-    />
+    <>
+      <NextSeo
+        title={`${title}｜ブログ`}
+        description={`ブログです。｜【${title}】${body}`}
+        openGraph={{
+          url: "",
+          title: "",
+          description: "",
+          images: [
+            {
+              url: thumbnail ? thumbnail.url : "",
+              width: 800,
+              height: 600,
+              alt: "サムネイル",
+              type: "image/jpg",
+            },
+          ],
+        }}
+        twitter={{
+          handle: "@mp_gumi",
+          cardType: "summary",
+        }}
+      />
+      <Article
+        body={body}
+        id={id}
+        nextId={nextId}
+        prevId={prevId}
+        publishDate={publishDate}
+        title={title}
+      />
+    </>
   );
 }
 

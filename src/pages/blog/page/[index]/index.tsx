@@ -1,6 +1,7 @@
 import Top, { BlogProps, TopProps } from "components/Top";
 import { client } from "../../../../../libs/client";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 
 type IndexProps = {
   blogs: BlogProps[];
@@ -9,7 +10,15 @@ type IndexProps = {
 };
 
 function Index({ blogs, pageIndex, totalCount }: IndexProps): JSX.Element {
-  return <Top blogs={blogs} totalCount={totalCount} pageIndex={pageIndex} />;
+  return (
+    <>
+      <NextSeo
+        title={`${pageIndex}ページ目｜ブログ`}
+        description={`私のブログの${pageIndex}ページ目です`}
+      />
+      <Top blogs={blogs} totalCount={totalCount} pageIndex={pageIndex} />
+    </>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

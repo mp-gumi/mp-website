@@ -11,6 +11,9 @@ function Pagination({ pageIndex, totalCount }: PaginationProps): JSX.Element {
   const lastPageIndex = useMemo(() => Math.ceil(totalCount / 10), [totalCount]);
 
   const pageLinks = useCallback((pageIndex: number, lastPageIndex: number) => {
+    //1ページしかない場合
+    if (pageIndex === 1) return;
+
     //総ページ数が7以下の場合
     if (lastPageIndex < 8) {
       return Array(lastPageIndex)
@@ -19,7 +22,9 @@ function Pagination({ pageIndex, totalCount }: PaginationProps): JSX.Element {
           <li key={index}>
             <Link href={`/blog/page/${index + 1}`}>
               <a className={styles.link}>
-                <div className={styles.box}>{index + 1}</div>
+                <div className={styles.box}>
+                  <div>{index + 1}</div>
+                </div>
               </a>
             </Link>
           </li>

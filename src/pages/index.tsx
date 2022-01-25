@@ -1,6 +1,7 @@
 import Top, { BlogProps, TopProps } from "components/Top";
 import { client } from "../../libs/client";
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 
 type PagesProps = {
   blogs: BlogProps[];
@@ -9,7 +10,15 @@ type PagesProps = {
 };
 
 function Pages({ blogs, pageIndex, totalCount }: PagesProps): JSX.Element {
-  return <Top blogs={blogs} pageIndex={pageIndex} totalCount={totalCount} />;
+  return (
+    <>
+      <NextSeo
+        title="ブログトップ"
+        description="私のブログのトップページです"
+      />
+      <Top blogs={blogs} pageIndex={pageIndex} totalCount={totalCount} />
+    </>
+  );
 }
 
 export const getStaticProps: GetStaticProps<TopProps> = async () => {
