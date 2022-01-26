@@ -1,4 +1,8 @@
 .wrapper {
+  margin: 0 auto;
+  max-width: 768px;
+}
+
+.inner {
   margin: 0 20px;
-  text-align: center;
 }

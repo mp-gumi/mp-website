@@ -19,7 +19,7 @@ function Id({
     <>
       <NextSeo
         title={`${title}｜ブログ`}
-        description={`ブログです。｜【${title}】${body}`}
+        description={body}
         openGraph={{
           url: "",
           title: "",
