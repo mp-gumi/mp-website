@@ -21,15 +21,17 @@ function Article({
 }: ArticleProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
-      <Header />
-      <Body
-        body={body}
-        id={id}
-        nextId={nextId}
-        prevId={prevId}
-        publishDate={publishDate}
-        title={title}
-      />
+      <div className={styles.inner}>
+        <Header />
+        <Body
+          body={body}
+          id={id}
+          nextId={nextId}
+          prevId={prevId}
+          publishDate={publishDate}
+          title={title}
+        />
+      </div>
     </div>
   );
 }

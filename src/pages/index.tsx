@@ -15,6 +15,24 @@ function Pages({ blogs, pageIndex, totalCount }: PagesProps): JSX.Element {
       <NextSeo
         title="ブログトップ"
         description="私のブログのトップページです"
+        openGraph={{
+          url: "",
+          title: "",
+          description: "",
+          images: [
+            {
+              url: "",
+              width: 800,
+              height: 600,
+              alt: "サムネイル",
+              type: "image/jpg",
+            },
+          ],
+        }}
+        twitter={{
+          handle: "@mp_gumi",
+          cardType: "summary",
+        }}
       />
       <Top blogs={blogs} pageIndex={pageIndex} totalCount={totalCount} />
     </>
