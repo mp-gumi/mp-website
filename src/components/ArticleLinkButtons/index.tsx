@@ -49,7 +49,10 @@ function ArticleLinkButtons({
       </div>
       <Link href="/">
         <a className={styles.topLink}>
-          <Button variant="outlined" sx={{ borderColor: "#999" }}>
+          <Button
+            variant="outlined"
+            sx={{ borderColor: "#999", color: "#828282" }}
+          >
             ブログトップへ
           </Button>
         </a>
