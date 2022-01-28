@@ -16,9 +16,9 @@ function Pages({ blogs, pageIndex, totalCount }: PagesProps): JSX.Element {
         title="ブログトップ"
         description="私のブログのトップページです"
         openGraph={{
-          url: "",
-          title: "",
-          description: "",
+          url: "https://mp-website-six.vercel.app/",
+          title: "ブログトップ",
+          description: "私のブログのトップページです",
           images: [
             {
               url: "",

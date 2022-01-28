@@ -1,5 +1,6 @@
 /* stylelint-disable selector-class-pattern */
 .wrapper {
+  margin: 0 autos;
   text-align: center;
 }
 
@@ -16,29 +17,6 @@
 }
 
 .body {
+  padding: 0 0 20px;
   text-align: left;
-}
-
-.otherArticleLink {
-  border: 1px solid #000;
-  border-radius: 4px;
-  color: #000;
-  margin: 8px;
-  padding: 4px 8px;
-  text-decoration: none;
-}
-
-.topLink {
-  border: 1px solid #000;
-  border-radius: 4px;
-  color: #000;
-  margin: 8px;
-  padding: 8px;
-  text-decoration: none;
-}
-
-.linksWrapper {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 20px;
 }
