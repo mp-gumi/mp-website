@@ -1,7 +1,6 @@
 import styles from "./style.module.css";
-import Header from "components/Header";
 import ArticleList from "components/ArticlesList";
-import Pagination from "components/Pagination";
+import Pager from "components/Pager";
 
 export type TopProps = {
   blogs: BlogProps[];
@@ -25,9 +24,8 @@ export type ThumbnailProps = {
 function Top({ blogs, pageIndex, totalCount }: TopProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
-      <Header />
       <ArticleList blogs={blogs} />
-      <Pagination totalCount={totalCount} pageIndex={pageIndex} />
+      <Pager totalCount={totalCount} pageIndex={pageIndex} />
     </div>
   );
 }

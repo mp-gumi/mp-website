@@ -1,11 +1,13 @@
 .wrapper {
-  align-items: center;
-  color: #fff;
+  height: 60px;
+  margin: 0 0 10px;
+  width: 100%;
+}
+
+.inner {
   display: flex;
   flex-direction: column;
-  height: 60px;
   justify-content: center;
-  width: 100%;
 }
 
 .link {

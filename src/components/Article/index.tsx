@@ -1,6 +1,6 @@
 import styles from "./style.module.css";
-import Header from "components/Header";
 import Body from "components/Body";
+import ArticleLinkButtons from "components/ArticleLinkButtons";
 
 type ArticleProps = {
   body: string;
@@ -22,15 +22,8 @@ function Article({
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
-        <Header />
-        <Body
-          body={body}
-          id={id}
-          nextId={nextId}
-          prevId={prevId}
-          publishDate={publishDate}
-          title={title}
-        />
+        <Body body={body} publishDate={publishDate} title={title} />
+        <ArticleLinkButtons id={id} nextId={nextId} prevId={prevId} />
       </div>
     </div>
   );

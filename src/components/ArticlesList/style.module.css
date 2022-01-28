@@ -12,6 +12,7 @@
 }
 
 .link {
+  background: #fff;
   border: 1px solid #000;
   border-radius: 4px;
   display: grid;
