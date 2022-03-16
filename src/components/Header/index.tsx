@@ -26,7 +26,7 @@ function Header(): JSX.Element {
       <AppBar color="primary">
         <Toolbar css={innerStyle}>
           <Link href="/">
-            <a css={anchorStyle}>ブログ</a>
+            <a css={anchorStyle}>mp-blog</a>
           </Link>
         </Toolbar>
       </AppBar>
