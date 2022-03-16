@@ -1,4 +1,6 @@
-import styles from "./style.module.css";
+/** @jsx jsx */
+/** @jsxRuntime classic */
+import { jsx, css } from "@emotion/react";
 import Body from "components/Body";
 import ArticleLinkButtons from "components/ArticleLinkButtons";
 
@@ -11,6 +13,16 @@ type ArticleProps = {
   title: string;
 };
 
+const wrapperStyle = css`
+  margin: 0 auto;
+  max-width: 768px;
+  padding: 32px 0;
+`;
+const innerStyle = css`
+  align-items: center;
+  margin: 0 20px;
+`;
+
 function Article({
   body,
   id,
@@ -20,8 +32,8 @@ function Article({
   title,
 }: ArticleProps): JSX.Element {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.inner}>
+    <div css={wrapperStyle}>
+      <div css={innerStyle}>
         <Body body={body} publishDate={publishDate} title={title} />
         <ArticleLinkButtons id={id} nextId={nextId} prevId={prevId} />
       </div>

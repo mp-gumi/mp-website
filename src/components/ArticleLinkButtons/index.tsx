@@ -1,13 +1,32 @@
+/** @jsx jsx */
+/** @jsxRuntime classic */
+import { jsx, css } from "@emotion/react";
 import { Button } from "@mui/material";
 import Link from "next/link";
 import { useCallback } from "react";
-import styles from "./style.module.css";
 
 type ArticleLinkButtonsProps = {
   id: string;
   nextId: string;
   prevId: string;
 };
+
+const otherArticleLinkStyle = css`
+  color: #000;
+  text-decoration: none;
+`;
+const wrapperStyle = css`
+  text-align: center;
+`;
+const innerStyle = css`
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 20px 20px;
+`;
+const topLinkStyle = css`
+  padding: 8px 0 0;
+  text-decoration: none;
+`;
 
 function ArticleLinkButtons({
   id,
@@ -19,7 +38,7 @@ function ArticleLinkButtons({
 
     return (
       <Link href={`/blog/${prevId}`}>
-        <a className={styles.otherArticleLink}>
+        <a css={otherArticleLinkStyle}>
           <Button variant="contained" color="primary">
             １つ前の記事へ
           </Button>
@@ -33,7 +52,7 @@ function ArticleLinkButtons({
 
     return (
       <Link href={`/blog/${nextId}`}>
-        <a className={styles.otherArticleLink}>
+        <a css={otherArticleLinkStyle}>
           <Button variant="contained" color="primary">
             １つ次の記事へ
           </Button>
@@ -42,13 +61,13 @@ function ArticleLinkButtons({
     );
   }, []);
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.inner}>
+    <div css={wrapperStyle}>
+      <div css={innerStyle}>
         {nextArticleLink(id, nextId)}
         {prevArticleLink(id, prevId)}
       </div>
       <Link href="/">
-        <a className={styles.topLink}>
+        <a css={topLinkStyle}>
           <Button
             variant="outlined"
             sx={{ borderColor: "#999", color: "#828282" }}
