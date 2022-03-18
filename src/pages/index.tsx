@@ -13,12 +13,12 @@ function Pages({ blogs, pageIndex, totalCount }: PagesProps): JSX.Element {
   return (
     <>
       <NextSeo
-        title="ブログトップ"
-        description="私のブログのトップページです"
+        title="mp-blog"
+        description="mp-blog｜トップページ"
         openGraph={{
           url: "https://mp-website-six.vercel.app/",
-          title: "ブログトップ",
-          description: "私のブログのトップページです",
+          title: "mp-blog",
+          description: "mp-blog｜トップページ",
           images: [
             {
               url: "",
