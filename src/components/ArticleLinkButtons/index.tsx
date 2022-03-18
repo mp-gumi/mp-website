@@ -26,6 +26,9 @@ const innerStyle = css`
 const topLinkStyle = css`
   padding: 8px 0 0;
   text-decoration: none;
+  .MuiButton-root {
+    border: 1px solid #828282;
+  }
 `;
 
 function ArticleLinkButtons({

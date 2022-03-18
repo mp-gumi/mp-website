@@ -13,8 +13,8 @@ function Index({ blogs, pageIndex, totalCount }: IndexProps): JSX.Element {
   return (
     <>
       <NextSeo
-        title={`${pageIndex}ページ目｜ブログ`}
-        description={`私のブログの${pageIndex}ページ目です`}
+        title={`${pageIndex}ページ目｜mp-blog`}
+        description={`${pageIndex}｜mp-blog`}
         canonical="https://mp-website-six.vercel.app/"
       />
       <Top blogs={blogs} totalCount={totalCount} pageIndex={pageIndex} />

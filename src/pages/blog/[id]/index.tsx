@@ -18,7 +18,7 @@ function Id({
   return (
     <>
       <NextSeo
-        title={`${title}｜ブログ`}
+        title={`${title}｜mp-blog`}
         description={body}
         openGraph={{
           url: "",
