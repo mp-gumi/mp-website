@@ -23,7 +23,7 @@ const articleStyle = css`
 const anchorStyle = css`
   background: #fff;
   border: 1px solid #000;
-  border-radius: 4px;
+  border-radius: 8px;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr;
@@ -51,6 +51,12 @@ const titleStyle = css`
   margin: 0 8px 4px;
   text-align: left;
 `;
+const titleEllipsisStyle = css`
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+`;
 const thumbnailWrapperStyle = css`
   display: flex;
   flex-direction: column;
@@ -72,7 +78,9 @@ function ArticleList({ blogs }: ArticleListProps): JSX.Element {
                   ? dayjs(publishDate).format("YYYY.MM.DD")
                   : "1970.01.01"}
               </div>
-              <div css={titleStyle}>{title}</div>
+              <div css={titleStyle}>
+                <span css={titleEllipsisStyle}>{title}</span>
+              </div>
               {thumbnail ? (
                 <div css={thumbnailWrapperStyle}>
                   <Image

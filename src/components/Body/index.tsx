@@ -20,17 +20,20 @@ const titleStyle = css`
 const dateStyle = css`
   color: #828282;
   font-size: 12px;
-  padding: 16px 20px 16px 0;
+  padding: 20px 20px 20px 0;
   text-align: right;
 `;
 const bodyStyle = css`
   padding: 0 0 20px;
   text-align: left;
+  line-height: 30px;
   h3 {
+    font-size: 24px;
     margin: 20px 0 4px;
   }
   h4 {
-    margin: 12px 0 4px;
+    font-size: 20px;
+    margin: 16px 0 4px;
   }
 `;
 
