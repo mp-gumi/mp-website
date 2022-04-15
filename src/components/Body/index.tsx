@@ -45,6 +45,12 @@ const bodyStyle = css`
     padding: 2px 8px;
     margin: 0 8px;
   }
+  pre {
+    background: #323232;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+  }
 `;
 
 function Body({ body, publishDate, title }: BodyProps): JSX.Element {
