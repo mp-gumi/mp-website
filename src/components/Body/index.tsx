@@ -29,11 +29,21 @@ const bodyStyle = css`
   line-height: 30px;
   h3 {
     font-size: 24px;
-    margin: 20px 0 4px;
+    margin: 30px 0 4px;
   }
   h4 {
     font-size: 20px;
-    margin: 16px 0 4px;
+    margin: 30px 0 4px;
+  }
+  img {
+    max-width: 100%;
+  }
+  code {
+    background: #323232;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin: 0 8px;
   }
 `;
 
