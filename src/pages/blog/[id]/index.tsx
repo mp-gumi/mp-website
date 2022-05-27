@@ -4,10 +4,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { client } from "../../../../libs/client";
 
-import * as cheerio from "cheerio";
-import hljs from "highlight.js";
-import "highlight.js/styles/felipec.css";
-
 type IdProps = BlogProps & { prevId: string; nextId: string };
 
 function Id({
@@ -120,16 +116,9 @@ export const getStaticProps: GetStaticProps<IdProps> = async ({ params }) => {
   const prevId = allContents[prevIndex].id;
   const nextId = allContents[nextIndex].id;
 
-  const $ = cheerio.load(blog.body);
-  $("pre code").each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text());
-    $(elm).html(result.value);
-    $(elm).addClass("hljs");
-  });
-
   return {
     props: {
-      body: $.html(),
+      body: blog.body,
       id: blog.id,
       nextId,
       prevId,
