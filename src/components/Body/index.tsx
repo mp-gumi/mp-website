@@ -38,15 +38,18 @@ const bodyStyle = css`
   img {
     max-width: 100%;
   }
+  pre {
+    background: #323232;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+  }
   code {
     background: #323232;
     color: #f0f0f0;
     border-radius: 4px;
     padding: 4px 8px;
     margin: 4px 8px;
-  }
-  pre {
-    margin: 8px 0;
   }
 `;
 
