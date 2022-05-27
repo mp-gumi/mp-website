@@ -40,16 +40,13 @@ const bodyStyle = css`
   }
   code {
     background: #323232;
-    color: #fff;
+    color: #f0f0f0;
     border-radius: 4px;
-    padding: 2px 8px;
-    margin: 0 8px;
+    padding: 4px 8px;
+    margin: 4px 8px;
   }
   pre {
-    background: #323232;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+    margin: 8px 0;
   }
 `;
 
