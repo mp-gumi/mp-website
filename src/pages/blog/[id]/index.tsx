@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { client } from "../../../../libs/client";
 
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/felipec.css";
 
